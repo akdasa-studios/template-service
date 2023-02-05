@@ -1,1 +1,1 @@
-# template-service
+# Template: Service
