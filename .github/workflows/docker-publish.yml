@@ -4,9 +4,9 @@ on:
     types: [released]
 
 env:
-  REGISTRY: ghcr.io
-  IMAGE_NAME: ${{ env.REGISTRY }}/${{ github.repository }}
-  IMAGE_TAG: ${{ github.event.release.tag_name }}
+  REGISTRY:   ghcr.io
+  IMAGE_NAME: ghcr.io/${{ github.repository }}
+  IMAGE_TAG:  ${{ github.event.release.tag_name }}
 
 
 jobs:
@@ -33,4 +33,5 @@ jobs:
       - name: Build and push
         uses: docker/build-push-action@v4
         with:
+          push: true
           tags: ${{ env.IMAGE_NAME }}:${{ env.IMAGE_TAG }},${{ env.IMAGE_NAME }}:latest
